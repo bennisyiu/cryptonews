@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Cryptonews</title>
+    <title>Crypto News Network</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,10 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render 'home/navbar' %>
+    <br/>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>

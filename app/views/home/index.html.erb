@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <% @news["Data"].each do |n|  %>
+        <div class="col-sm">
+          <div class="card" style="width: 18rem;">
+            <img src="<%= n["imageurl"]  %>" class="card-img-top" alt="<%= n["source"] %>">
+            <div class="card-body">
+              <h5 class="card-title"><%= n["body"] %></h5>
+              <p class="card-text"><%= n["body"] %></p>
+              <a href="<%= n["url"] %>" class="btn btn-secondary">Read more... </a>
+            </div>
+          </div>
+        </div>
+        <br/>
+    <% end %>
+  </div>
+</div>
+
+
+
