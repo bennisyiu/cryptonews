@@ -1,3 +1,16 @@
+<!-- each loop to load all currencies -->
+<div>
+  <% @prices["DISPLAY"].each do |k, y| %>
+    <%= k %> - <%= y["USD"]["PRICE"] %><br/>
+    24hr High: <%= y["USD"]["HIGHDAY"] %><br/>
+    24hr Low: <%= y["USD"]["LOWDAY"] %><br/>
+    Market Cap: <%= y["USD"]["LOWDAY"] %><br/>
+    <br/><hr/><br/>
+  <% end %>
+
+</div>
+
+<!-- news cards here -->
 <div class="container">
   <div class="row">
     <% @news["Data"].each do |n|  %>
