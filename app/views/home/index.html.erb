@@ -1,14 +1,33 @@
-<!-- each loop to load all currencies -->
-<div>
-  <% @prices["DISPLAY"].each do |k, y| %>
-    <%= k %> - <%= y["USD"]["PRICE"] %><br/>
-    24hr High: <%= y["USD"]["HIGHDAY"] %><br/>
-    24hr Low: <%= y["USD"]["LOWDAY"] %><br/>
-    Market Cap: <%= y["USD"]["LOWDAY"] %><br/>
-    <br/><hr/><br/>
+<!-- coins table -->
+<table class="table table-striped table-bordered table-hover border-dark">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">No.</th>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">24hr High</th>
+      <th scope="col">24hr Low</th>
+      <th scope="col">Market Cap</th>
+    </tr>
+  </thead>
+  <% i = 1 %>
+  <% base = "https://cryptoicon-api.vercel.app/api/icon/" %>
+  <tbody>
+    <% @prices["DISPLAY"].each do |k, y| %>
+    <% coin_img = base+k.downcase %>
+    <tr>
+      <td><%= i %></td>
+      <td><img src="<%= coin_img %>" alt="<% k %>" width="30" height="30" class="me-3"><%= k %></td>
+      <td><%= y["USD"]["PRICE"] %></td>
+      <td><%= y["USD"]["HIGHDAY"] %></td>
+      <td><%= y["USD"]["LOWDAY"] %></td>
+      <td><%= y["USD"]["MKTCAP"] %></td>
+    </tr>
+    <% i += 1 %>
   <% end %>
-
-</div>
+  </tbody>
+</table>
+<br/><hr/><br/>
 
 <!-- news cards here -->
 <div class="container">
