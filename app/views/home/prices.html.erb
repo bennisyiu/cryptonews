@@ -1,9 +1,23 @@
-<h1>Prices!</h1>
-<!-- https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC&tsyms=USD,JPY,EUR  -->
-<!-- https://min-api.cryptocompare.com/data/v2/news/?lang=EN -->
-<%= @symbol %>
 <br>
-<br>
-<%= @quote %>
+<% if @symbol %>
+  <% @quote["DISPLAY"].each do |k, y| %>
+    <div class="card-header w-50">
+      <div class="card-body">
+        <h5 class="card-title"><%= k %></h5>
+          Price: <%= y["USD"]["PRICE"] %></br>
+          24Hr High: <%= y["USD"]["HIGHDAY"] %></br>
+          24Hr Low: <%= y["USD"]["LOWDAY"] %></br>
+          Market Cap: <%= y["USD"]["MKTCAP"] %></br>
+      </div>
+    </div>
+  <% end %>
+  <% else %>
+    <%# <form> %>
+    <h5>Please enter a symbol</h5>
+    <%= form_tag('/home/prices', method: 'get') do %>
+      <%= text_field_tag 'sym', nil, placeholder: 'Enter a crypto symbol' %>
+      <%= submit_tag("Submit") %>
+    <% end %>
+ <% end %>
 
 
